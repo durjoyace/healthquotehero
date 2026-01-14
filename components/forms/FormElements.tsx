@@ -252,15 +252,19 @@ export function DatePicker({
     label: String(maxYear - i),
   }));
 
+  const fieldsetId = `date-picker-${label?.toLowerCase().replace(/\s+/g, '-') || 'date'}`;
+
   return (
-    <div className="mb-4">
+    <fieldset className="mb-4">
       {label && (
-        <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
+        <legend className="block text-sm font-medium text-gray-700 mb-2">{label}</legend>
       )}
       <div className="grid grid-cols-3 gap-2">
         <select
+          id={`${fieldsetId}-month`}
           value={month}
           onChange={(e) => onMonthChange(e.target.value)}
+          aria-label="Birth month"
           className={`px-3 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 ${
             error ? "border-red-500" : "border-gray-300"
           }`}
@@ -273,8 +277,10 @@ export function DatePicker({
           ))}
         </select>
         <select
+          id={`${fieldsetId}-day`}
           value={day}
           onChange={(e) => onDayChange(e.target.value)}
+          aria-label="Birth day"
           className={`px-3 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 ${
             error ? "border-red-500" : "border-gray-300"
           }`}
@@ -287,8 +293,10 @@ export function DatePicker({
           ))}
         </select>
         <select
+          id={`${fieldsetId}-year`}
           value={year}
           onChange={(e) => onYearChange(e.target.value)}
+          aria-label="Birth year"
           className={`px-3 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 ${
             error ? "border-red-500" : "border-gray-300"
           }`}
@@ -301,8 +309,8 @@ export function DatePicker({
           ))}
         </select>
       </div>
-      {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
-    </div>
+      {error && <p className="mt-1 text-sm text-red-600" role="alert">{error}</p>}
+    </fieldset>
   );
 }
 
@@ -363,8 +371,8 @@ export function ZipInput({ value, onChange, onValidZip, ...props }: ZipInputProp
         if (data.success) {
           onValidZip(data.city, data.state);
         }
-      } catch (error) {
-        console.error("ZIP lookup failed:", error);
+      } catch {
+        // ZIP lookup failed silently - user can still proceed with manual entry
       }
     }
   };

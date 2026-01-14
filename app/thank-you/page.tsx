@@ -3,6 +3,7 @@
 import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import type { InsuranceOffer } from "@/lib/types/forms";
 
 function ThankYouContent() {
@@ -10,6 +11,7 @@ function ThankYouContent() {
 
   const [offers, setOffers] = useState<InsuranceOffer[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   const type = searchParams.get("type") || "health";
   const arrivalId = searchParams.get("arrivalId") || "";
@@ -27,8 +29,8 @@ function ThankYouContent() {
         if (data.success) {
           setOffers(data.offers);
         }
-      } catch (error) {
-        console.error("Failed to fetch offers:", error);
+      } catch {
+        setError(true);
       } finally {
         setLoading(false);
       }
@@ -51,6 +53,7 @@ function ThankYouContent() {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <path
                 strokeLinecap="round"
@@ -81,8 +84,12 @@ function ThankYouContent() {
           </p>
 
           {loading ? (
-            <div className="flex justify-center py-12">
+            <div className="flex justify-center py-12" role="status" aria-label="Loading offers">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
+            </div>
+          ) : error ? (
+            <div className="text-center py-8 text-gray-500">
+              <p>Unable to load offers. Our team will contact you with personalized quotes shortly.</p>
             </div>
           ) : offers.length > 0 ? (
             <div className="space-y-4">
@@ -102,7 +109,7 @@ function ThankYouContent() {
           <h3 className="font-bold text-lg mb-4">What Happens Next?</h3>
           <ol className="space-y-3">
             <li className="flex items-start">
-              <span className="flex-shrink-0 w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-sm font-bold mr-3">
+              <span className="flex-shrink-0 w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-sm font-bold mr-3" aria-hidden="true">
                 1
               </span>
               <span className="text-gray-600">
@@ -110,7 +117,7 @@ function ThankYouContent() {
               </span>
             </li>
             <li className="flex items-start">
-              <span className="flex-shrink-0 w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-sm font-bold mr-3">
+              <span className="flex-shrink-0 w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-sm font-bold mr-3" aria-hidden="true">
                 2
               </span>
               <span className="text-gray-600">
@@ -118,7 +125,7 @@ function ThankYouContent() {
               </span>
             </li>
             <li className="flex items-start">
-              <span className="flex-shrink-0 w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-sm font-bold mr-3">
+              <span className="flex-shrink-0 w-6 h-6 bg-primary-100 text-primary-700 rounded-full flex items-center justify-center text-sm font-bold mr-3" aria-hidden="true">
                 3
               </span>
               <span className="text-gray-600">
@@ -139,9 +146,10 @@ function ThankYouContent() {
   );
 }
 
-// Offer Card Component
+// Offer Card Component with safe image handling
 function OfferCard({ offer }: { offer: InsuranceOffer }) {
   const isClickToCall = offer.adtype === "click_to_call";
+  const [imageError, setImageError] = useState(false);
 
   return (
     <div className="border rounded-lg overflow-hidden hover:shadow-md transition-shadow">
@@ -149,15 +157,15 @@ function OfferCard({ offer }: { offer: InsuranceOffer }) {
         {/* Logo */}
         <div className="p-4 flex items-center justify-center md:w-48 bg-gray-50">
           <div className="w-32 h-16 bg-white rounded flex items-center justify-center p-2">
-            {offer.logoURL ? (
-              <img
+            {offer.logoURL && !imageError ? (
+              <Image
                 src={offer.logoURL}
-                alt={offer.company}
+                alt={`${offer.company} logo`}
+                width={128}
+                height={64}
                 className="max-w-full max-h-full object-contain"
-                onError={(e) => {
-                  e.currentTarget.style.display = "none";
-                  e.currentTarget.parentElement!.innerHTML = `<span class="text-sm font-bold text-gray-700">${offer.company}</span>`;
-                }}
+                onError={() => setImageError(true)}
+                unoptimized
               />
             ) : (
               <span className="text-sm font-bold text-gray-700">{offer.company}</span>
@@ -175,6 +183,7 @@ function OfferCard({ offer }: { offer: InsuranceOffer }) {
                   className="w-4 h-4 text-green-500 mr-2 flex-shrink-0"
                   fill="currentColor"
                   viewBox="0 0 20 20"
+                  aria-hidden="true"
                 >
                   <path
                     fillRule="evenodd"
@@ -224,7 +233,7 @@ function OfferCard({ offer }: { offer: InsuranceOffer }) {
 // Loading fallback
 function LoadingFallback() {
   return (
-    <div className="min-h-[80vh] flex items-center justify-center">
+    <div className="min-h-[80vh] flex items-center justify-center" role="status" aria-label="Loading page">
       <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary-600"></div>
     </div>
   );

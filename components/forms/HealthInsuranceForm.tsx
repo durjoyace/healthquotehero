@@ -126,8 +126,8 @@ function HealthInsuranceFormContent({ initialStep = 1 }: HealthInsuranceFormProp
           setArrivalId(data.arrivalId);
           setFormData((prev) => ({ ...prev, arrival_id: data.arrivalId }));
         }
-      } catch (error) {
-        console.error("Failed to create arrival:", error);
+      } catch {
+        // Arrival creation failed silently - form can still be submitted
       }
     };
 
@@ -254,8 +254,7 @@ function HealthInsuranceFormContent({ initialStep = 1 }: HealthInsuranceFormProp
       } else {
         setErrors({ submit: result.error || "Submission failed" });
       }
-    } catch (error) {
-      console.error("Submit error:", error);
+    } catch {
       setErrors({ submit: "An error occurred. Please try again." });
     } finally {
       setIsSubmitting(false);
