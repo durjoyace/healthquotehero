@@ -1,0 +1,97 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply antialiased text-gray-900 bg-white;
+  }
+
+  h1 {
+    @apply text-3xl font-bold mb-4 md:text-4xl;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold mb-3 mt-8 md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl font-semibold mb-2 mt-6 md:text-2xl;
+  }
+
+  h4 {
+    @apply text-lg font-medium mb-2 mt-4;
+  }
+
+  p {
+    @apply mb-4 leading-relaxed;
+  }
+
+  a {
+    @apply text-primary-600 hover:text-primary-800 underline-offset-2;
+  }
+
+  ul,
+  ol {
+    @apply mb-4 pl-6;
+  }
+
+  ul {
+    @apply list-disc;
+  }
+
+  ol {
+    @apply list-decimal;
+  }
+
+  li {
+    @apply mb-1;
+  }
+}
+
+@layer components {
+  .container {
+    @apply mx-auto px-4 max-w-6xl;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-primary-600 text-white hover:bg-primary-700;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-900 hover:bg-gray-200;
+  }
+
+  .card {
+    @apply bg-white rounded-lg shadow-md p-6;
+  }
+
+  .prose {
+    @apply max-w-none;
+  }
+
+  .prose img {
+    @apply rounded-lg my-6;
+  }
+
+  .prose table {
+    @apply w-full border-collapse my-6;
+  }
+
+  .prose th,
+  .prose td {
+    @apply border border-gray-200 px-4 py-2 text-left;
+  }
+
+  .prose th {
+    @apply bg-gray-50 font-semibold;
+  }
+}

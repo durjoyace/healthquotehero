@@ -1,0 +1,110 @@
+[
+  {
+    "slug": "terms",
+    "title": "Terms",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/terms/"
+  },
+  {
+    "slug": "privacy",
+    "title": "Privacy",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/privacy/"
+  },
+  {
+    "slug": "contact",
+    "title": "Contact",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/contact/"
+  },
+  {
+    "slug": "health-insurance",
+    "title": "Health Insurance",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/health-insurance/"
+  },
+  {
+    "slug": "medicare",
+    "title": "Medicare",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/medicare/"
+  },
+  {
+    "slug": "healthquotehero",
+    "title": "HealthQuoteHero",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/healthquotehero/"
+  },
+  {
+    "slug": "health-plan-form-m1",
+    "title": "Health Plan Form M1",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/health-plan-form-m1/"
+  },
+  {
+    "slug": "medicare-plan-form-m1",
+    "title": "Medicare Plan Form M1",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/medicare-plan-form-m1/"
+  },
+  {
+    "slug": "health-plan-form-m2",
+    "title": "Health Plan Form M2",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/health-plan-form-m2/"
+  },
+  {
+    "slug": "health-plan-form-m3",
+    "title": "Health Plan Form M3",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/health-plan-form-m3/"
+  },
+  {
+    "slug": "medicare-plan-form-m2",
+    "title": "Medicare Plan Form M2",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/medicare-plan-form-m2/"
+  },
+  {
+    "slug": "health-plan-form-m5",
+    "title": "Health Plan Form M5",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/health-plan-form-m5/"
+  },
+  {
+    "slug": "health-plan-form-m4",
+    "title": "Health Plan Form M4",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/health-plan-form-m4/"
+  },
+  {
+    "slug": "health-plan-form-m6",
+    "title": "Health Plan Form M6",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/health-plan-form-m6/"
+  },
+  {
+    "slug": "medicare-plan-form-m3",
+    "title": "Medicare Plan Form M3",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/medicare-plan-form-m3/"
+  },
+  {
+    "slug": "health-plan-form-m7",
+    "title": "Health Plan Form M7",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/health-plan-form-m7/"
+  },
+  {
+    "slug": "medicare-plan-form-m4",
+    "title": "Medicare Plan Form M4",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/medicare-plan-form-m4/"
+  },
+  {
+    "slug": "medicare-plan-form-m5",
+    "title": "Medicare Plan Form M5",
+    "type": "page",
+    "canonical": "https://www.healthquotehero.com/medicare-plan-form-m5/"
+  }
+]

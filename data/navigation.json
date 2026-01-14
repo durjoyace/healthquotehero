@@ -1,0 +1,39 @@
+{
+  "footer": [
+    {
+      "id": "532227",
+      "title": "Contact Us",
+      "href": "/contact",
+      "order": 1,
+      "parent": "0"
+    },
+    {
+      "id": "532225",
+      "title": "Terms and Conditions",
+      "href": "/terms",
+      "order": 2,
+      "parent": "0"
+    },
+    {
+      "id": "532226",
+      "title": "Privacy Policy",
+      "href": "/privacy",
+      "order": 3,
+      "parent": "0"
+    }
+  ],
+  "header": [
+    {
+      "title": "Health Insurance",
+      "href": "/health-insurance"
+    },
+    {
+      "title": "Medicare",
+      "href": "/medicare"
+    },
+    {
+      "title": "Contact",
+      "href": "/contact"
+    }
+  ]
+}
